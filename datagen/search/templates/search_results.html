@@ -1,0 +1,139 @@
+{% load static %}
+
+<!-- templates/search/search_results.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Data Overview</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="bg-dark text-white text-center py-4">
+        <h1>Business Data Insights</h1>
+        <p>Key Insights into Your Business Landscape</p>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container my-5">
+        <!-- Market Research Data -->
+        <section class="mb-5">
+            <h2 class="mb-3">Market Research Data</h2>
+
+            <!-- Market Size Chart -->
+            <div class="row mb-4">
+                <div class="col-12 col-md-6">
+                    <h4>Market Size Overview</h4>
+                    <canvas id="marketSizeChart"></canvas>
+                </div>
+
+                <!-- Market Trends Chart -->
+                <div class="col-12 col-md-6">
+                    <h4>Market Trends</h4>
+                    <canvas id="marketTrendsChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Market Research Table -->
+            <h4 class="mb-3">Market Research Overview</h4>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Data Point</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Market Size</td>
+                        <td>Total Addressable Market, Serviceable Available Market, Serviceable Obtainable Market</td>
+                    </tr>
+                    <tr>
+                        <td>Market Trends</td>
+                        <td>Emerging technologies, shifts in consumer behavior, regulatory changes</td>
+                    </tr>
+                    <tr>
+                        <td>Customer Segmentation</td>
+                        <td>Demographics, psychographics, behavior-based segments</td>
+                    </tr>
+                    <tr>
+                        <td>Customer Needs and Pain Points</td>
+                        <td>Qualitative and quantitative data on customer problems</td>
+                    </tr>
+                    <tr>
+                        <td>Market Growth Rate</td>
+                        <td>Analysis of future opportunities and viability</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+
+
+    <!-- Header Section -->
+    <header class="bg-dark text-white text-center py-4">
+        <h1>Market Research Insights</h1>
+        <p>Key Data Points for Business Strategy</p>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container my-5">
+        <!-- Market Research Data -->
+        <section class="mb-5">
+            <h2 class="mb-4">Market Research Data</h2>
+
+            <!-- Market Size -->
+            <div class="mb-5">
+                <h3>Market Size</h3>
+                <p>Understand the potential size of the market for your product/service.</p>
+                <canvas id="marketSizeChart"></canvas>
+            </div>
+
+            <!-- Market Trends -->
+            <div class="mb-5">
+                <h3>Market Trends</h3>
+                <p>Identify key trends in the market that could affect your business.</p>
+                <canvas id="marketTrendsChart"></canvas>
+            </div>
+
+            <!-- Customer Segmentation -->
+            <div class="mb-5">
+                <h3>Customer Segmentation</h3>
+                <p>Segment the market based on demographics, psychographics, and behavior to understand different customer needs.</p>
+                <canvas id="customerSegmentationChart"></canvas>
+            </div>
+
+            <!-- Customer Needs & Pain Points -->
+            <div class="mb-5">
+                <h3>Customer Needs and Pain Points</h3>
+                <p>Understand the problems your target customers are facing and how they are currently solving them.</p>
+                <canvas id="customerNeedsChart"></canvas>
+            </div>
+
+            <!-- Market Growth Rate -->
+            <div class="mb-5">
+                <h3>Market Growth Rate</h3>
+                <p>Analyze the rate of growth in the target market to estimate future opportunities and viability.</p>
+                <canvas id="marketGrowthRateChart"></canvas>
+            </div>
+        </section>
+    </main>
+
+    
+    <!-- Footer Section -->
+    <footer class="bg-dark text-white text-center py-1">
+        <p>&copy; 2024 Business Insights</p>
+    </footer>
+
+    <script src="{% static 'js/script.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+</body>
+</html>

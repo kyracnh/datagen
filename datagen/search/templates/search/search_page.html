@@ -1,76 +1,20 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Gen ...</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
-        }
-        .search-container {
-            border-radius: 5px;
-            text-align: center;
-            padding: 15px;
-            width: 100%;
-            height: 14%;
-            max-width: 400px;
-        }
-        textarea {
-            background-color: #f8f6f6;
-            padding: 10px;
-            font-size: 16px;
-            width: 92%;
-            min-height: 100px;
-            resize: vertical;
-            box-shadow: none;
-            border-radius: 10px;
-            border: none;
-        }
-        textarea::placeholder {
-            text-align: center; /* Centers horizontally */
-            line-height: 6; /* Centers vertically */
-        }
-        .search-button {
-    background-color: #00aaff;
-    color: white;
-    font-size: 16px;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    margin: 10px;
-    align-items: center;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.search-button:hover {
-    background-color: #0088cc;
-    transform: scale(1.05);
-}
-
-.search-button:active {
-    background-color: #0077b3;
-    transform: scale(1);
-}
-
-.search-icon {
-    margin-right: 8px;
-    font-size: 18px;
-}
-    </style>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
     <div class="search-container">
-        <form method="POST">
+        <form method="GET" action="{% url 'search_results' %}">
             {% csrf_token %}
+            <!-- {{ form.as_p }} -->
             <textarea name="query" placeholder="Build your startup today..." required></textarea>
-            <button class="search-button">
+            <button class="search-button" type="submit">
                 <i class="search-icon">🔍</i> Search
             </button>
         </form>
