@@ -6,18 +6,153 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Gen ...</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .popup {
+            animation: slideUp 0.5s ease-in-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(20%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
 </head>
-<body>
-    <div class="search-container">
-        <form method="GET" action="{% url 'search_results' %}">
-            {% csrf_token %}
-            <!-- {{ form.as_p }} -->
-            <textarea name="query" placeholder="Build your startup today..." required></textarea>
-            <button class="search-button" type="submit">
-                <i class="search-icon">🔍</i> Search
+<body class="bg-white text-gray-800 font-sans">
+
+    <nav class="fixed top-0 left-0 right-0 bg-white p-4 flex justify-between items-center z-50">
+        <!-- Logo -->
+        <div class="flex-grow text-center">
+            <img src="{% static 'images/logo.png' %}" alt="Logo" class="h-8">
+        </div>
+    
+        <!-- Right Section -->
+        <div class="flex items-center space-x-4">
+            <!-- Login Icon -->
+            <button id="login-btn" class="text-black font-medium hover:text-blue-500 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A3 3 0 017 17h10a3 3 0 011.879.804M15 11a3 3 0 00-6 0m6 0V9a6 6 0 10-6 0v2a3 3 0 00-6 0v2m6 8v-4m0-4v4m0 4v-4" />
+                </svg>
             </button>
-        </form>
+    
+            <!-- Profile Section -->
+            <img src="{% static 'images/profile.jpg' %}" alt="Profile" class="w-10 h-10 rounded-full">
+            <span class="font-medium">John Doe</span>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="flex items-center justify-center min-h-screen">
+        <div class="text-center p-6 bg-white rounded-lg shadow-lg w-full max-w-lg">
+            <form method="GET" action="{% url 'search_results' %}">
+                {% csrf_token %}
+                <textarea name="query" placeholder="Build your startup today..." required
+                          class="w-full p-4 mb-6 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"></textarea>
+                <button type="submit"
+                        class="w-full py-2 px-4 bg-blue-500 text-white font-medium rounded-lg hover:bg-blue-400 transition duration-300 ease-in-out transform hover:scale-105">
+                    <i class="search-icon">🔍</i> Search
+                </button>
+            </form>
+        </div>
     </div>
+
+    <!-- Login Popup -->
+    <div id="login-popup" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center z-50">
+        <div class="popup bg-white p-6 rounded-lg shadow-lg max-w-sm w-full">
+            <!-- Close Button -->
+            <div class="flex justify-end">
+                <button id="close-popup" class="text-gray-500 hover:text-gray-800">✖</button>
+            </div>
+
+            <!-- Forms -->
+            <div id="login-form">
+                <h2 class="text-xl font-medium mb-4">Login</h2>
+                <form>
+                    <input type="email" placeholder="Email" required
+                           class="w-full p-2 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <input type="password" placeholder="Password" required
+                           class="w-full p-2 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <button type="submit"
+                            class="w-full py-2 px-4 bg-blue-500 text-white font-medium rounded-lg hover:bg-blue-400 transition duration-300">
+                        Login
+                    </button>
+                </form>
+                <p class="mt-4 text-sm text-gray-500">Don't have an account? 
+                    <button id="show-signup" class="text-blue-500 hover:underline">Sign up</button>
+                </p>
+            </div>
+
+            <div id="signup-form" class="hidden">
+                <h2 class="text-xl font-medium mb-4">Sign Up</h2>
+                <form>
+                    <input type="text" placeholder="Name" required
+                           class="w-full p-2 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <input type="email" placeholder="Email" required
+                           class="w-full p-2 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <input type="password" placeholder="Password" required
+                           class="w-full p-2 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <button type="submit"
+                            class="w-full py-2 px-4 bg-blue-500 text-white font-medium rounded-lg hover:bg-blue-400 transition duration-300">
+                        Sign Up
+                    </button>
+                </form>
+                <p class="mt-4 text-sm text-gray-500">Already have an account? 
+                    <button id="show-login" class="text-blue-500 hover:underline">Login</button>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const loginBtn = document.getElementById('login-btn');
+        const popup = document.getElementById('login-popup');
+        const closePopup = document.getElementById('close-popup');
+        const showSignup = document.getElementById('show-signup');
+        const showLogin = document.getElementById('show-login');
+        const loginForm = document.getElementById('login-form');
+        const signupForm = document.getElementById('signup-form');
+
+        // Show login popup
+        loginBtn.addEventListener('click', () => {
+            popup.classList.remove('hidden');
+        });
+
+        // Close popup
+        closePopup.addEventListener('click', () => {
+            popup.classList.add('hidden');
+        });
+
+        // Show signup form
+        showSignup.addEventListener('click', () => {
+            loginForm.classList.add('hidden');
+            signupForm.classList.remove('hidden');
+        });
+
+        // Show login form
+        showLogin.addEventListener('click', () => {
+            signupForm.classList.add('hidden');
+            loginForm.classList.remove('hidden');
+        });
+    </script>
+
 </body>
 </html>
