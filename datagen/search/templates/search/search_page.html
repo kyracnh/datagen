@@ -35,22 +35,32 @@
                 opacity: 1;
             }
         }
+        #menu-btn {
+                margin-left: 10%;
+        }
+        #profile-image {
+                margin-right: 10%;
+        }
     </style>
 </head>
 <body class="bg-white text-gray-800 font-sans">
 
     <!-- Navbar -->
     <nav class="fixed top-0 left-0 right-0 bg-white p-4 flex justify-between items-center z-50">
+
+        
         <button id="menu-btn" class="text-black font-medium hover:text-blue-500 transition">
             <!-- Menu Icon -->
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
         </button>
+
+
         <h1 class="text-lg font-bold">Gata Gen Ai</h1>
 
         <!-- Right Section -->
-        <div class="flex items-center space-x-4">
+        <div class="flex items-center space-x-4" id="profile-image">
             <!-- Login Icon -->
             <button id="login-btn" class="text-black font-medium hover:text-blue-500 transition">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -59,8 +69,17 @@
             </button>
 
             <!-- Profile Section -->
-            <img src="{% static 'images/aanmazir.jpg' %}" alt="Profile" class="w-10 h-10 rounded-full">
-            <span class="font-medium">Ahmed</span>
+            <div class="relative inline-block hover:z-10"> 
+                <img src="{% static 'images/aanmazir.jpg' %}" alt="Profile" class="w-10 h-10 rounded-full">
+                <div class="hidden absolute top-full left-0 bg-white rounded-md shadow-sm w-48 mt-2">
+                  <ul class="p-2">
+                    <li class="py-1 px-3 hover:bg-gray-100 rounded-md">Name: John Doe</li>
+                    <li class="py-1 px-3 hover:bg-gray-100 rounded-md">ID: 123456789</li>
+                    <li class="py-1 px-3 hover:bg-gray-100 rounded-md">Email: john.doe@example.com</li>
+                    <li class="py-1 px-3 hover:bg-gray-100 rounded-md">Date: 2023-12-26</li>
+                  </ul>
+                </div>
+              </div>
         </div>
     </nav>
 
@@ -114,9 +133,9 @@
             <img src="./static/images/logo.png" alt="Logo" class="h-12 mx-auto">
         </div>
         
-        <form method="GET" action="{% url 'search_results' %}">
+        <form id="searchForm" method="POST" action="{% url 'get_results' %}">
             {% csrf_token %}
-            <textarea name="query" placeholder="Build your startup today..." required
+            <textarea name="prompt" id="prompt" placeholder="Build your startup today..." required
                       class="w-full p-4 mb-6 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"></textarea>
             <button type="submit"
                     class="w-full py-2 px-4 bg-blue-500 text-white font-medium rounded-lg hover:bg-blue-400 transition duration-300 ease-in-out transform hover:scale-105">

@@ -2,681 +2,126 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Data Gen Research...</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your startup Data</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@latest/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-white text-gray-800 flex flex-col min-h-screen overflow-y-auto">
-
-  <!-- Main Content -->
-  <div class="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 p-4">
-
-    <!-- Area 1 with Market Trends Chart -->
-    <div class="bg-gray-20 p-4 border rounded-md shadow-md min-h-[40vh] relative flex flex-col justify-center items-center">
-      <h3 class="absolute top-4 left-4 text-xl font-semibold text-blue-600">Market Trends</h3>
-      <!-- Chart Canvas for Market Trends -->
-      <canvas id="marketTrendsChart" class="w-full h-72"></canvas>
-      <!-- Chart.js Script -->
-      <script>
-        var ctx = document.getElementById('marketTrendsChart').getContext('2d');
-        var marketTrendsChart = new Chart(ctx, {
-          type: 'line',
-          data: {
-            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
-            datasets: [{
-              label: 'Market Trend',
-              data: [12, 19, 3, 5, 2, 3, 7],
-              borderColor: 'rgb(75, 192, 192)',
-              backgroundColor: 'rgba(75, 192, 192, 0.2)',
-              fill: true,
-              tension: 0.1
-            }]
-          },
-          options: {
-            responsive: true,
-            scales: {
-              x: { title: { display: true, text: 'Month' } },
-              y: { title: { display: true, text: 'Value' }, min: 0, max: 20 }
-            }
-          }
-        });
-      </script>
+<body class="bg-gray-100">
+    <div class="container mx-auto px-4 py-8"> 
+        <div class="grid grid-cols-2 gap-4">
+            <div class="bg-white rounded-lg shadow-sm p-6 h-100 animate-fade-in-up hover:shadow-lg hover:scale-105 transition duration-300"> 
+                <h2 class="text-lg font-semibold mb-2">Direct Competitors</h2>
+                <canvas id="competitorChart" class="w-full h-auto"></canvas>
+            </div>
+            <div class="bg-white rounded-lg shadow-sm p-6 h-48 animate-fade-in-up hover:shadow-lg hover:scale-105 transition duration-300">
+                <h2 class="text-lg font-semibold mb-2">Area 2</h2>
+                <p>Content for Area 2</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-sm p-6 h-48 animate-fade-in-up hover:shadow-lg hover:scale-105 transition duration-300">
+                <h2 class="text-lg font-semibold mb-2">Area 3</h2>
+                <p>Content for Area 3</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-sm p-6 h-48 animate-fade-in-up hover:shadow-lg hover:scale-105 transition duration-300">
+                <h2 class="text-lg font-semibold mb-2">Area 4</h2>
+                <p>Content for Area 4</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-sm p-6 h-48 animate-fade-in-up hover:shadow-lg hover:scale-105 transition duration-300">
+              <h2 class="text-lg font-semibold mb-2">Area 3</h2>
+              <p>Content for Area 3</p>
+          </div>
+          <div class="bg-white rounded-lg shadow-sm p-6 h-48 animate-fade-in-up hover:shadow-lg hover:scale-105 transition duration-300">
+              <h2 class="text-lg font-semibold mb-2">Area 4</h2>
+              <p>Content for Area 4</p>
+          </div>
+          <div class="bg-white rounded-lg shadow-sm p-6 h-48 animate-fade-in-up hover:shadow-lg hover:scale-105 transition duration-300">
+            <h2 class="text-lg font-semibold mb-2">Area 3</h2>
+            <p>Content for Area 3</p>
+        </div>
+        <div class="bg-white rounded-lg shadow-sm p-6 h-48 animate-fade-in-up hover:shadow-lg hover:scale-105 transition duration-300">
+            <h2 class="text-lg font-semibold mb-2">Area 4</h2>
+            <p>Content for Area 4</p>
+        </div>
+        <div class="bg-white rounded-lg shadow-sm p-6 h-48 animate-fade-in-up hover:shadow-lg hover:scale-105 transition duration-300">
+          <h2 class="text-lg font-semibold mb-2">Area 3</h2>
+          <p>Content for Area 3</p>
+      </div>
+      <div class="bg-white rounded-lg shadow-sm p-6 h-48 animate-fade-in-up hover:shadow-lg hover:scale-105 transition duration-300">
+          <h2 class="text-lg font-semibold mb-2">Area 4</h2>
+          <p>Content for Area 4</p>
+      </div>
+        </div>
     </div>
 
-    <!-- Area 2 with Competitors Analysis Chart -->
-    <div class="bg-gray-45 p-4 border rounded-md shadow-md min-h-[40vh] relative flex flex-col justify-center items-center">
-      <h3 class="absolute top-4 left-4 text-xl font-semibold text-blue-600">Competitors Analysis</h3>
-      <!-- Competitor Bar Chart Canvas -->
-      <canvas id="competitorsChart" class="w-full h-72"></canvas>
-      <!-- Chart.js Script for Competitors Chart -->
-      <script>
-        var ctx2 = document.getElementById('competitorsChart').getContext('2d');
-        var competitorsChart = new Chart(ctx2, {
-          type: 'bar',
-          data: {
-            labels: ['Competitor A', 'Competitor B', 'Competitor C', 'Competitor D', 'Competitor E'],
-            datasets: [{
-              label: 'Market Share (%)',
-              data: [35, 20, 15, 10, 20],
-              backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)'],
-              borderColor: ['rgb(255, 99, 132)', 'rgb(54, 162, 235)', 'rgb(255, 206, 86)', 'rgb(75, 192, 192)', 'rgb(153, 102, 255)'],
+    <style>
+        @keyframes fade-in-up {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in-up {
+            animation: fade-in-up 0.5s ease-in-out;
+        }
+    </style>
+    <script>
+      // Fetch data passed from the Django context
+      const relatedData = {{ related_data|safe }};
+    
+      // Process data for Chart.js
+      const labels = relatedData.map(item => item.label);
+      const values = relatedData.map(item => item.value);
+    
+      const ctx = document.getElementById("resultChart").getContext("2d");
+      new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: "Related Data",
+              data: values,
+              backgroundColor: [
+                "rgba(75, 192, 192, 0.5)",
+                "rgba(255, 99, 132, 0.5)",
+                "rgba(255, 205, 86, 0.5)",
+                "rgba(153, 102, 255, 0.5)"
+              ],
+              borderColor: [
+                "rgba(75, 192, 192, 1)",
+                "rgba(255, 99, 132, 1)",
+                "rgba(255, 205, 86, 1)",
+                "rgba(153, 102, 255, 1)"
+              ],
               borderWidth: 1
-            }]
-          },
-          options: {
-            responsive: true,
-            scales: {
-              x: { title: { display: true, text: 'Competitors' } },
-              y: { title: { display: true, text: 'Market Share (%)' }, min: 0, max: 40 }
             }
-          }
-        });
-      </script>
-    </div>
-
-    <!-- Area 3 with Startup Costs Bar Chart -->
-    <div class="bg-gray-35 p-4 border rounded-md shadow-md min-h-[40vh] relative flex flex-col justify-center items-center">
-      <h3 class="absolute top-4 left-4 text-xl font-semibold text-blue-600">Startup Costs Breakdown</h3>
-      
-      <!-- Startup Costs Bar Chart Canvas -->
-      <canvas id="startupCostsChart" class="w-full h-72"></canvas>
-      
-      <!-- Chart.js Script for Startup Costs Bar Chart -->
-      <script>
-        var ctx3 = document.getElementById('startupCostsChart').getContext('2d');
-        var startupCostsChart = new Chart(ctx3, {
-          type: 'bar', // Bar chart for startup costs
-          data: {
-            labels: ['Office Space', 'Equipment', 'Marketing', 'Salaries', 'Legal Fees'], // Cost categories
-            datasets: [{
-              label: 'Startup Costs ($)',
-              data: [10000, 5000, 3000, 2000, 1000], // The cost breakdown
-              backgroundColor: ['rgba(255, 99, 132, 0.6)', 'rgba(54, 162, 235, 0.6)', 'rgba(255, 206, 86, 0.6)', 'rgba(75, 192, 192, 0.6)', 'rgba(153, 102, 255, 0.6)'],
-              borderColor: ['rgb(255, 99, 132)', 'rgb(54, 162, 235)', 'rgb(255, 206, 86)', 'rgb(75, 192, 192)', 'rgb(153, 102, 255)'],
-              borderWidth: 1
-            }]
-          },
-          options: {
-            responsive: true,
-            scales: {
-              x: { title: { display: true, text: 'Cost Categories' } },
-              y: { title: { display: true, text: 'Amount ($)' }, min: 0, ticks: { stepSize: 2000 } }
-            }
-          }
-        });
-      </script>
-    </div>
-
-    <!-- Area 4 with Must Use Keywords Radar Chart -->
-<div class="bg-gray-25 p-4 border rounded-md shadow-md min-h-[40vh] relative flex flex-col justify-center items-center">
-  <h3 class="absolute top-4 left-4 text-xl font-semibold text-blue-600">Must Use Keywords</h3>
-  
-  <!-- Must Use Keywords Radar Chart Canvas -->
-  <canvas id="keywordsRadarChart" class="w-full h-72"></canvas>
-  
-  <!-- Chart.js Script for Must Use Keywords Radar Chart -->
-  <script>
-    var ctx4 = document.getElementById('keywordsRadarChart').getContext('2d');
-    var keywordsRadarChart = new Chart(ctx4, {
-      type: 'radar', // Radar chart for must use keywords
-      data: {
-        labels: ['Keyword A', 'Keyword B', 'Keyword C', 'Keyword D', 'Keyword E'], // Keywords
-        datasets: [{
-          label: 'Search Volume (Thousands)',
-          data: [150, 120, 200, 90, 50], // Search volume for each keyword (in thousands)
-          backgroundColor: 'rgba(75, 192, 192, 0.2)', // Semi-transparent background
-          borderColor: 'rgb(75, 192, 192)', // Border color
-          borderWidth: 2,
-          pointBackgroundColor: 'rgb(75, 192, 192)', // Point color
-          pointBorderColor: '#fff',
-          pointBorderWidth: 2,
-          pointRadius: 5
-        }]
-      },
-      options: {
-        responsive: true,
-        scale: {
-          ticks: { beginAtZero: true, max: 250, stepSize: 50 }, // Adjusting max scale and tick steps
-          gridLines: { color: 'rgba(255, 255, 255, 0.2)' }
+          ]
         },
-        plugins: {
-          tooltip: {
-            callbacks: {
-              label: function(tooltipItem) {
-                return tooltipItem.label + ': ' + tooltipItem.raw + 'k'; // Formatting tooltip to display 'k' for thousands
-              }
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: "top"
+            },
+            title: {
+              display: true,
+              text: "Related Data Chart"
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true
             }
           }
         }
-      }
-    });
-  </script>
-</div>
-
-
-    <!-- Area 5 with Clickable SWOT Analysis Horizontal Bar Chart -->
-<div class="bg-gray-25 p-4 border rounded-md shadow-md min-h-[40vh] relative flex flex-col justify-center items-center">
-  <h3 class="absolute top-4 left-4 text-xl font-semibold text-blue-600">SWOT Analysis</h3>
-  
-  <!-- SWOT Analysis Horizontal Bar Chart Canvas -->
-  <canvas id="swotBarChart" class="w-full h-72 cursor-pointer"></canvas>
-  
-  <!-- Modal Popup (Initially hidden) -->
-  <div id="swotModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
-    <div class="bg-white p-6 rounded-md shadow-md w-4/5 max-w-xl">
-      <h3 class="text-2xl font-semibold text-blue-600 mb-4">SWOT Analysis - Detailed View</h3>
-      
-      <!-- Modal Content: More information about SWOT analysis -->
-      <p><strong>Strengths:</strong> Your strengths might include a strong brand, loyal customer base, or superior technology. We scored it at 75%, indicating a significant advantage.</p>
-      <p><strong>Weaknesses:</strong> Weaknesses could be limited resources, lack of experience, or high operational costs. We scored it at 40%, suggesting areas for improvement.</p>
-      <p><strong>Opportunities:</strong> Opportunities represent untapped markets, new trends, or partnerships. We scored it at 90%, showing high potential for growth.</p>
-      <p><strong>Threats:</strong> Threats include competition, economic downturns, or changing regulations. We scored it at 60%, implying moderate concern for external risks.</p>
-      
-      <!-- Close Button for the Modal -->
-      <button id="closeModal" class="mt-4 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none">Close</button>
-    </div>
-  </div>
-
-  <!-- Chart.js Script for SWOT Analysis Horizontal Bar Chart -->
-  <script>
-    var ctx5 = document.getElementById('swotBarChart').getContext('2d');
-    var swotBarChart = new Chart(ctx5, {
-      type: 'bar', // Horizontal bar chart for SWOT Analysis
-      data: {
-        labels: ['Strengths', 'Weaknesses', 'Opportunities', 'Threats'], // SWOT categories
-        datasets: [{
-          label: 'SWOT Analysis',
-          data: [75, 40, 90, 60], // Relative importance of each SWOT category (scaled 0-100)
-          backgroundColor: [
-            'rgba(75, 192, 192, 0.6)',  // Strengths (Greenish)
-            'rgba(255, 99, 132, 0.6)',  // Weaknesses (Red)
-            'rgba(54, 162, 235, 0.6)',  // Opportunities (Blue)
-            'rgba(255, 159, 64, 0.6)'   // Threats (Orange)
-          ],
-          borderColor: [
-            'rgb(75, 192, 192)',  // Strengths (Greenish)
-            'rgb(255, 99, 132)',  // Weaknesses (Red)
-            'rgb(54, 162, 235)',  // Opportunities (Blue)
-            'rgb(255, 159, 64)'   // Threats (Orange)
-          ],
-          borderWidth: 1,
-          borderRadius: 5 // Rounded corners for bars
-        }]
-      },
-      options: {
-        indexAxis: 'y', // Makes the bars horizontal
-        responsive: true,
-        scales: {
-          x: { 
-            beginAtZero: true, 
-            max: 100, // Adjust scale for SWOT categories
-            grid: { display: false }
-          },
-          y: { 
-            grid: { display: false }
-          }
-        },
-        plugins: {
-          legend: { display: false }, // Hides the legend
-          tooltip: {
-            callbacks: {
-              label: function(tooltipItem) {
-                return tooltipItem.label + ': ' + tooltipItem.raw + '%'; // Show percentage value in tooltip
-              }
-            }
-          }
-        }
-      }
-    });
-
-    // Get the canvas and modal elements
-    var swotCanvas = document.getElementById('swotBarChart');
-    var swotModal = document.getElementById('swotModal');
-    var closeModalBtn = document.getElementById('closeModal');
-
-    // Open the modal when the chart is clicked
-    swotCanvas.addEventListener('click', function() {
-      swotModal.classList.remove('hidden');
-    });
-
-    // Close the modal when the close button is clicked
-    closeModalBtn.addEventListener('click', function() {
-      swotModal.classList.add('hidden');
-    });
-  </script>
-</div>
-
-
-      <!-- 6th Area: Domain Name Suggestions -->
-<div class="p-6 bg-gray-25 rounded-lg shadow-lg space-y-4">
-  <h2 class="text-2xl font-semibold text-gray-800 mb-4">Possible Domain Names for Your Business</h2>
-  
-  <p class="text-gray-600 mb-6">Here are some domain names you could consider for your startup. Click on a domain name to copy it to your clipboard or to check availability.</p>
-  
-  <!-- Domain name suggestion grid with 2 columns -->
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-    <!-- Example Domain Names -->
-    <div class="domain-card p-4 bg-white border rounded-md text-center cursor-pointer hover:bg-blue-50 hover:border-blue-300" onclick="copyDomain('TechInnovators.com')">
-      <p class="font-semibold text-gray-700">TechInnovators.com</p>
-    </div>
-    <div class="domain-card p-4 bg-white border rounded-md text-center cursor-pointer hover:bg-blue-50 hover:border-blue-300" onclick="copyDomain('StartUpVisionary.com')">
-      <p class="font-semibold text-gray-700">StartUpVisionary.com</p>
-    </div>
-    <div class="domain-card p-4 bg-white border rounded-md text-center cursor-pointer hover:bg-blue-50 hover:border-blue-300" onclick="copyDomain('BusinessGeniusHub.com')">
-      <p class="font-semibold text-gray-700">BusinessGeniusHub.com</p>
-    </div>
-    <div class="domain-card p-4 bg-white border rounded-md text-center cursor-pointer hover:bg-blue-50 hover:border-blue-300" onclick="copyDomain('InnovateNow.com')">
-      <p class="font-semibold text-gray-700">InnovateNow.com</p>
-    </div>
-    <div class="domain-card p-4 bg-white border rounded-md text-center cursor-pointer hover:bg-blue-50 hover:border-blue-300" onclick="copyDomain('NextBigThing.com')">
-      <p class="font-semibold text-gray-700">NextBigThing.com</p>
-    </div>
-    <div class="domain-card p-4 bg-white border rounded-md text-center cursor-pointer hover:bg-blue-50 hover:border-blue-300" onclick="copyDomain('CreativeMindsNetwork.com')">
-      <p class="font-semibold text-gray-700">CreativeMindsNetwork.com</p>
-    </div>
-    <div class="domain-card p-4 bg-white border rounded-md text-center cursor-pointer hover:bg-blue-50 hover:border-blue-300" onclick="copyDomain('FutureLeadersCo.com')">
-      <p class="font-semibold text-gray-700">FutureLeadersCo.com</p>
-    </div>
-    <div class="domain-card p-4 bg-white border rounded-md text-center cursor-pointer hover:bg-blue-50 hover:border-blue-300" onclick="copyDomain('SuccessDriven.com')">
-      <p class="font-semibold text-gray-700">SuccessDriven.com</p>
-    </div>
-    <div class="domain-card p-4 bg-white border rounded-md text-center cursor-pointer hover:bg-blue-50 hover:border-blue-300" onclick="copyDomain('GrowthSpark.com')">
-      <p class="font-semibold text-gray-700">GrowthSpark.com</p>
-    </div>
-    <div class="domain-card p-4 bg-white border rounded-md text-center cursor-pointer hover:bg-blue-50 hover:border-blue-300" onclick="copyDomain('VisionaryEntrepreneur.com')">
-      <p class="font-semibold text-gray-700">VisionaryEntrepreneur.com</p>
-    </div>
-    <div class="domain-card p-4 bg-white border rounded-md text-center cursor-pointer hover:bg-blue-50 hover:border-blue-300" onclick="copyDomain('SmartBusinessIdeas.com')">
-      <p class="font-semibold text-gray-700">SmartBusinessIdeas.com</p>
-    </div>
-    <div class="domain-card p-4 bg-white border rounded-md text-center cursor-pointer hover:bg-blue-50 hover:border-blue-300" onclick="copyDomain('NextEraStartups.com')">
-      <p class="font-semibold text-gray-700">NextEraStartups.com</p>
-    </div>
-  </div>
-
-  <!-- Copy notification -->
-  <div id="copyNotification" class="mt-4 p-2 text-sm bg-green-500 text-white rounded-md hidden">
-    Domain name copied to clipboard!
-  </div>
-</div>
-
-<!-- JavaScript to copy the domain name -->
-<script>
-  function copyDomain(domain) {
-    // Create a temporary input element to copy the domain name to clipboard
-    var tempInput = document.createElement("input");
-    tempInput.value = domain;
-    document.body.appendChild(tempInput);
-    tempInput.select();
-    document.execCommand("copy");
-    document.body.removeChild(tempInput);
-    
-    // Show the copy notification
-    var notification = document.getElementById("copyNotification");
-    notification.classList.remove("hidden");
-    
-    // Hide the notification after 2 seconds
-    setTimeout(function() {
-      notification.classList.add("hidden");
-    }, 2000);
-  }
-</script>
-
-
-  </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <!-- 7th Area: Business Model Canvas -->
-<div class="p-6 bg-gray-800 space-y-6">
-  <h2 class="text-2xl font-semibold text-white mb-4">Business Model Canvas</h2>
-  
-  <p class="text-gray-300 mb-6">The Business Model Canvas is a strategic management tool that helps you visualize and evaluate your business model. Here's a basic outline to guide you:</p>
-  
-  <!-- Business Model Canvas Grid (Full-width) -->
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-    <!-- Key Partners -->
-    <div class="bg-white p-4 border rounded-lg shadow-md">
-      <h3 class="text-xl font-semibold text-gray-700 mb-2">Key Partners</h3>
-      <p class="text-gray-600">Who are your key partners and suppliers? What key resources do they provide?</p>
-    </div>
-    
-    <!-- Key Activities -->
-    <div class="bg-white p-4 border rounded-lg shadow-md">
-      <h3 class="text-xl font-semibold text-gray-700 mb-2">Key Activities</h3>
-      <p class="text-gray-600">What are the most important activities your business must do to create value?</p>
-    </div>
-    
-    <!-- Key Resources -->
-    <div class="bg-white p-4 border rounded-lg shadow-md">
-      <h3 class="text-xl font-semibold text-gray-700 mb-2">Key Resources</h3>
-      <p class="text-gray-600">What resources are crucial for delivering your product or service?</p>
-    </div>
-    
-    <!-- Value Propositions -->
-    <div class="bg-white p-4 border rounded-lg shadow-md">
-      <h3 class="text-xl font-semibold text-gray-700 mb-2">Value Propositions</h3>
-      <p class="text-gray-600">What value are you providing to customers? What makes your offering unique?</p>
-    </div>
-    
-    <!-- Customer Relationships -->
-    <div class="bg-white p-4 border rounded-lg shadow-md">
-      <h3 class="text-xl font-semibold text-gray-700 mb-2">Customer Relationships</h3>
-      <p class="text-gray-600">What type of relationship do you have with your customers? How do you build and maintain them?</p>
-    </div>
-    
-    <!-- Channels -->
-    <div class="bg-white p-4 border rounded-lg shadow-md">
-      <h3 class="text-xl font-semibold text-gray-700 mb-2">Channels</h3>
-      <p class="text-gray-600">How do you communicate with and reach your customer segments?</p>
-    </div>
-    
-    <!-- Customer Segments -->
-    <div class="bg-white p-4 border rounded-lg shadow-md">
-      <h3 class="text-xl font-semibold text-gray-700 mb-2">Customer Segments</h3>
-      <p class="text-gray-600">Who are your target customers? What are their needs and characteristics?</p>
-    </div>
-    
-    <!-- Cost Structure -->
-    <div class="bg-white p-4 border rounded-lg shadow-md">
-      <h3 class="text-xl font-semibold text-gray-700 mb-2">Cost Structure</h3>
-      <p class="text-gray-600">What are the major costs associated with running your business?</p>
-    </div>
-    
-    <!-- Revenue Streams -->
-    <div class="bg-white p-4 border rounded-lg shadow-md">
-      <h3 class="text-xl font-semibold text-gray-700 mb-2">Revenue Streams</h3>
-      <p class="text-gray-600">How does your business earn revenue? What are the different revenue sources?</p>
-    </div>
-  </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- 8th Area: Identify Potential Customers and Their Buying Behaviors -->
-<div class="p-6 bg-gray-25 space-y-6">
-  <h2 class="text-2xl font-semibold text-gray-800 mb-4">Identify Potential Customers and Their Buying Behaviors</h2>
-  
-  <p class="text-gray-600 mb-6">Understanding your customers is crucial for driving sales and growing your business. In this section, we focus on identifying potential customers and analyzing their buying behaviors.</p>
-  
-  <!-- Customer Segments Grid (Full-width) -->
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-    <!-- Customer Demographics -->
-    <div class="bg-white p-4 border rounded-lg shadow-md">
-      <h3 class="text-xl font-semibold text-gray-700 mb-2">Customer Demographics</h3>
-      <p class="text-gray-600">What are the key demographics of your target customers? (Age, gender, location, income level, etc.)</p>
-    </div>
-    
-    <!-- Psychographics -->
-    <div class="bg-white p-4 border rounded-lg shadow-md">
-      <h3 class="text-xl font-semibold text-gray-700 mb-2">Psychographics</h3>
-      <p class="text-gray-600">What are the interests, values, and lifestyles of your customers? What motivates them to buy?</p>
-    </div>
-    
-    <!-- Behavioral Data -->
-    <div class="bg-white p-4 border rounded-lg shadow-md">
-      <h3 class="text-xl font-semibold text-gray-700 mb-2">Behavioral Data</h3>
-      <p class="text-gray-600">What data can you gather about your customers' buying patterns? (e.g., browsing habits, purchase history)</p>
-    </div>
-    
-    <!-- Buying Triggers -->
-    <div class="bg-white p-4 border rounded-lg shadow-md">
-      <h3 class="text-xl font-semibold text-gray-700 mb-2">Buying Triggers</h3>
-      <p class="text-gray-600">What triggers cause customers to make a purchase decision? (e.g., special offers, urgency, social proof)</p>
-    </div>
-    
-    <!-- Purchase Journey -->
-    <div class="bg-white p-4 border rounded-lg shadow-md">
-      <h3 class="text-xl font-semibold text-gray-700 mb-2">Purchase Journey</h3>
-      <p class="text-gray-600">What is the typical journey of your customers from awareness to purchase?</p>
-    </div>
-    
-    <!-- Buying Frequency -->
-    <div class="bg-white p-4 border rounded-lg shadow-md">
-      <h3 class="text-xl font-semibold text-gray-700 mb-2">Buying Frequency</h3>
-      <p class="text-gray-600">How often do your customers make purchases? Are they one-time buyers or repeat customers?</p>
-    </div>
-    
-    <!-- Influencers on Decision -->
-    <div class="bg-white p-4 border rounded-lg shadow-md">
-      <h3 class="text-xl font-semibold text-gray-700 mb-2">Influencers on Decision</h3>
-      <p class="text-gray-600">What factors most influence your customers' buying decisions? (Price, quality, reviews, etc.)</p>
-    </div>
-    
-    <!-- Competitor Analysis -->
-    <div class="bg-white p-4 border rounded-lg shadow-md">
-      <h3 class="text-xl font-semibold text-gray-700 mb-2">Competitor Analysis</h3>
-      <p class="text-gray-600">Who are your customers' other options? How does your product/service compare to competitors?</p>
-    </div>
-    
-    <!-- Customer Pain Points -->
-    <div class="bg-white p-4 border rounded-lg shadow-md">
-      <h3 class="text-xl font-semibold text-gray-700 mb-2">Customer Pain Points</h3>
-      <p class="text-gray-600">What are the main challenges or pain points that your customers are facing, and how can your business solve them?</p>
-    </div>
-  </div>
-</div>
-
-
-
-
-
-
-
-
-<!-- Container for two columns -->
-<div class="container mx-auto p-4 grid grid-cols-1 md:grid-cols-2 gap-4">
-
-  <!-- Column 1: Sales Performance (Radar Chart) -->
-  <div class="bg-gray-25 p-6 border rounded-md shadow-md">
-    <h3 class="text-xl font-semibold text-blue-600 mb-4">Sales Performance (Radar Chart)</h3>
-    <canvas id="salesPerformanceChart"></canvas>
-  </div>
-
-  <!-- Column 2: Two Charts - Customer Acquisition Cost & Customer Retention Rate -->
-  <div class="bg-gray-25 p-6 border rounded-md shadow-md space-y-6">
-    <h3 class="text-xl font-semibold text-blue-600 mb-4">Customer Data</h3>
-
-    <!-- First Chart: Customer Acquisition Cost (Bar Chart) -->
-    <div>
-      <h4 class="text-lg font-semibold text-blue-500 mb-2">Customer Acquisition Cost by Product</h4>
-      <canvas id="customerAcquisitionCostChart"></canvas>
-    </div>
-
-    <!-- Second Chart: Customer Retention Rate (Bar Chart) -->
-    <div>
-      <h4 class="text-lg font-semibold text-blue-500 mb-2">Customer Retention Rate</h4>
-      <canvas id="customerRetentionRateChart"></canvas>
-    </div>
-  </div>
-
-</div>
-
-<!-- Chart.js Script -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
-  // Radar Chart for Sales Performance
-  const salesPerformanceCtx = document.getElementById('salesPerformanceChart').getContext('2d');
-  const salesPerformanceData = {
-    labels: ['Q1', 'Q2', 'Q3', 'Q4'],
-    datasets: [{
-      label: 'Sales Performance',
-      data: [65, 59, 80, 81],
-      backgroundColor: 'rgba(16, 185, 129, 0.2)',
-      borderColor: 'rgba(16, 185, 129, 1)',
-      borderWidth: 1
-    }]
-  };
-  const salesPerformanceConfig = {
-    type: 'radar',
-    data: salesPerformanceData,
-    options: {
-      responsive: true,
-      scale: {
-        ticks: { beginAtZero: true }
-      }
-    }
-  };
-  new Chart(salesPerformanceCtx, salesPerformanceConfig);
-
-  // Bar Chart for Customer Acquisition Cost
-  const customerAcquisitionCostCtx = document.getElementById('customerAcquisitionCostChart').getContext('2d');
-  const customerAcquisitionCostData = {
-    labels: ['Product A', 'Product B', 'Product C', 'Product D'],
-    datasets: [{
-      label: 'Customer Acquisition Cost ($)',
-      data: [120, 150, 180, 90],
-      backgroundColor: '#10B981',
-      borderColor: '#10B981',
-      borderWidth: 1
-    }]
-  };
-  const customerAcquisitionCostConfig = {
-    type: 'bar',
-    data: customerAcquisitionCostData,
-    options: {
-      responsive: true,
-      scales: {
-        x: { title: { display: true, text: 'Products' } },
-        y: { title: { display: true, text: 'Cost ($)' } }
-      }
-    }
-  };
-  new Chart(customerAcquisitionCostCtx, customerAcquisitionCostConfig);
-
-  // Bar Chart for Customer Retention Rate
-  const customerRetentionRateCtx = document.getElementById('customerRetentionRateChart').getContext('2d');
-  const customerRetentionRateData = {
-    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
-    datasets: [{
-      label: 'Customer Retention Rate (%)',
-      data: [85, 88, 90, 87, 92],
-      backgroundColor: '#3B82F6',
-      borderColor: '#3B82F6',
-      borderWidth: 1
-    }]
-  };
-  const customerRetentionRateConfig = {
-    type: 'bar',
-    data: customerRetentionRateData,
-    options: {
-      responsive: true,
-      scales: {
-        x: { title: { display: true, text: 'Months' } },
-        y: { title: { display: true, text: 'Retention Rate (%)' } }
-      }
-    }
-  };
-  new Chart(customerRetentionRateCtx, customerRetentionRateConfig);
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <!-- Main Content -->
-  <div class="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 p-4">
-
-
-<!-- Area 4 to Area 15 (Other areas) -->
-<div class="bg-gray-100 p-4 border rounded-md shadow-md min-h-[40vh] relative flex justify-center items-center">
-  <h3 class="absolute top-4 left-4 text-xl font-semibold text-blue-600">Area 4</h3>
-  <p class="text-center">Content for Area 4</p>
-</div>
-<!-- More areas... -->
-
-<!-- Area 4 to Area 15 (Other areas) -->
-<div class="bg-gray-100 p-4 border rounded-md shadow-md min-h-[40vh] relative flex justify-center items-center">
-  <h3 class="absolute top-4 left-4 text-xl font-semibold text-blue-600">Area 4</h3>
-  <p class="text-center">Content for Area 4</p>
-</div>
-<!-- More areas... -->
-
-<!-- Area 4 to Area 15 (Other areas) -->
-<div class="bg-gray-100 p-4 border rounded-md shadow-md min-h-[40vh] relative flex justify-center items-center">
-  <h3 class="absolute top-4 left-4 text-xl font-semibold text-blue-600">Area 4</h3>
-  <p class="text-center">Content for Area 4</p>
-</div>
-<!-- More areas... -->
-
-<!-- Area 4 to Area 15 (Other areas) -->
-<div class="bg-gray-100 p-4 border rounded-md shadow-md min-h-[40vh] relative flex justify-center items-center">
-  <h3 class="absolute top-4 left-4 text-xl font-semibold text-blue-600">Area 4</h3>
-  <p class="text-center">Content for Area 4</p>
-</div>
-<!-- More areas... -->
-
-<!-- Area 4 to Area 15 (Other areas) -->
-<div class="bg-gray-100 p-4 border rounded-md shadow-md min-h-[40vh] relative flex justify-center items-center">
-  <h3 class="absolute top-4 left-4 text-xl font-semibold text-blue-600">Area 4</h3>
-  <p class="text-center">Content for Area 4</p>
-</div>
-<!-- More areas... -->
-
-<!-- Area 4 to Area 15 (Other areas) -->
-<div class="bg-gray-100 p-4 border rounded-md shadow-md min-h-[40vh] relative flex justify-center items-center">
-  <h3 class="absolute top-4 left-4 text-xl font-semibold text-blue-600">Area 4</h3>
-  <p class="text-center">Content for Area 4</p>
-</div>
-<!-- More areas... -->
-
-</div>
-
-
-  <!-- Footer (Fixed) -->
-  <footer class="bg-gray-800 text-gray-300 py-4 fixed bottom-0 left-0 w-full">
-    <div class="max-w-7xl mx-auto px-4 text-center">
-      <p>&copy; 2024 Your Company. All rights reserved.</p>
-    </div>
-  </footer>
-
+      });
+    </script>
 </body>
 </html>
