@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Search Results</title>
+</head>
+<body>
+    <h1>Google Search</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="query" value="{{ query }}" placeholder="Enter your search query">
+        <button type="submit">Search</button>
+    </form>
+
+    <h2>Results:</h2>
+    <ul>
+        {% for item in results %}
+            <li>
+                <a href="{{ item.link }}">{{ item.title }}</a>
+                <p>{{ item.snippet }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

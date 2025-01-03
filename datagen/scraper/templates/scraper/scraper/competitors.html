@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Competitor Search</title>
+</head>
+<body>
+    <h1>Competitor Analysis</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="query" value="{{ query }}" placeholder="Describe your startup project">
+        <button type="submit">Find Competitors</button>
+    </form>
+
+    {% if competitors %}
+        <h2>Top Competitors:</h2>
+        <ul>
+            {% for competitor in competitors %}
+                <li>
+                    <a href="{{ competitor.link }}">{{ competitor.title }}</a>
+                    <p>{{ competitor.snippet }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No competitors found. Try refining your query.</p>
+    {% endif %}
+</body>
+</html>
