@@ -8,38 +8,49 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 font-sans">
+    <style>
+        .smooth-shadow {
+          box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+      
+        .hover-effect:hover {
+          transform: translateY(-5px); /* Moves the element slightly upward */
+          box-shadow: 0 5px 8px rgba(0, 0, 0, 0.2); /* Increases shadow on hover */
+        }
+      </style>
     <div class="container mx-auto py-10 px-4">
         <!-- Search Form -->
-        <div class="bg-white shadow-lg rounded-lg p-6 mb-8">
-            <h1 class="text-2xl font-bold text-gray-800 mb-4 text-center">Search for Competitors</h1>
-            <form method="POST" action="" class="flex flex-col items-center gap-4">
+        <div class="bg-white smooth-shadow rounded-lg p-6 mb-8 hover-effect">
+            <h1 class="text-3xl font-regular text-blue-600 mb-4 text-left">Datagen Startups F*cker...</h1>
+            <form method="POST" action="" class="flex items-center">
                 {% csrf_token %}
                 <input 
                     type="text" 
                     name="query" 
-                    placeholder="Enter your search query" 
+                    placeholder="Generate your startup data..." 
                     required 
-                    class="w-full max-w-lg p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    class="w-full px-4 py-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                 <button 
                     type="submit" 
-                    class="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
+                    class="px-4 py-2 bg-blue-500 text-white rounded-r-lg hover:bg-blue-600">
                     Search
                 </button>
             </form>
         </div>
 
         {% if results %}
-        <!-- Charts Section -->
-        <div class="bg-white shadow-lg rounded-lg p-6">
-            <h2 class="text-xl font-semibold text-gray-800 mb-4 text-center">
+        <!-- Charts Section 1 -->
+        <div class="bg-white smooth-shadow rounded-lg p-6 mb-8 hover-effect">
+            <!--<h2 class="text-xl font-semibold text-gray-800 mb-4 text-center">
                 Competitor Analysis for "{{ query }}"
-            </h2>
+            </h2>-->
 
             <!-- Grid layout for chart containers -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- Competitor Chart Container -->
                 <div class="bg-gray-50 shadow-md rounded-lg p-4">
-                    <h3 class="text-lg font-medium text-gray-700 text-center mb-2">Top Competitors</h3>
+                    <h3 class="text-lg font-medium text-gray-700 text-left mb-2">Top Competitors</h3>
                     <div class="flex justify-center">
                         <canvas id="competitorChart" class="w-full max-w-lg md:max-w-2xl h-80"></canvas>
                     </div>
@@ -47,7 +58,74 @@
 
                 <!-- Competitor Count Chart Container -->
                 <div class="bg-gray-50 shadow-md rounded-lg p-4">
-                    <h3 class="text-lg font-medium text-gray-700 text-center mb-2">Competitor Count</h3>
+                    <h3 class="text-lg font-medium text-gray-700 text-left mb-2">Competitor Count</h3>
+                    <div class="flex justify-center">
+                        <canvas id="competitorCountChart" class="w-full max-w-md h-60"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Charts Section 2 -->
+        <div class="bg-white smooth-shadow rounded-lg p-6 mb-8 hover-effect">
+            <!--<h2 class="text-xl font-semibold text-gray-800 mb-4 text-center">
+                Competitor Analysis for "{{ query }}"
+            </h2>-->
+
+            <!-- Grid layout for chart containers -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Competitor Chart Container -->
+                <div class="bg-gray-50 shadow-md rounded-lg p-4">
+                    <h3 class="text-lg font-medium text-gray-700 text-left mb-2">Top Keywords for your Startup</h3>
+                    <div class="flex justify-center">
+<canvas id="keywordsChart" width="400" height="200"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  // Extract best keywords from the server-rendered variable
+  const bestKeywords = "{{ best_keywords }}".split(", ").filter(keyword => keyword.length > 0);
+  
+  // Assign a random count or weight to each keyword (for demonstration purposes)
+  const keywordCounts = bestKeywords.map(() => Math.floor(Math.random() * 50) + 10);
+
+  const ctx = document.getElementById('keywordsChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'bar', // Use bar chart; can also use 'doughnut', 'polarArea', or 'radar'
+    data: {
+      labels: bestKeywords, // Keywords as labels
+      datasets: [{
+        label: 'Keyword Frequency',
+        data: keywordCounts, // Random counts for visualization
+        backgroundColor: bestKeywords.map((_, i) => `rgba(${54 + i * 10}, 162, 235, 0.8)`), // Gradient colors
+        borderColor: bestKeywords.map((_, i) => `rgba(${54 + i * 10}, 162, 235, 1)`), // Border colors
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: false }, // Hides the legend for simplicity
+        tooltip: { enabled: true }
+      },
+      scales: {
+        x: {
+          beginAtZero: true,
+          title: { display: true, text: 'Keywords' }
+        },
+        y: {
+          beginAtZero: true,
+          title: { display: true, text: 'Frequency' }
+        }
+      }
+    }
+  });
+</script>
+
+                    </div>
+                </div>
+
+                <!-- Competitor Count Chart Container -->
+                <div class="bg-gray-50 shadow-md rounded-lg p-4">
+                    <h3 class="text-lg font-medium text-gray-700 text-left mb-2">Ad Data: Scrape sponsored links or ad copies.</h3>
                     <div class="flex justify-center">
                         <canvas id="competitorCountChart" class="w-full max-w-md h-60"></canvas>
                     </div>
@@ -73,7 +151,7 @@
                     datasets: [{
                         label: 'Competitor Links',
                         data: Array(competitorNames.length).fill(1),
-                        backgroundColor: 'rgba(75, 192, 192, 0.5)',
+                        backgroundColor: 'rgba(0, 111, 255, 0.7)',
                         borderColor: 'rgba(75, 192, 192, 1)',
                         borderWidth: 1
                     }]
@@ -92,7 +170,6 @@
                     },
                     scales: {
                         x: {
-                            title: { display: true, text: 'Competitors', font: { size: 14 } },
                             ticks: { autoSkip: false, font: { size: 12 } }
                         },
                         y: { display: false }
@@ -102,32 +179,52 @@
 
             // Competitor Count Chart
             const ctx2 = document.getElementById('competitorCountChart').getContext('2d');
-            new Chart(ctx2, {
-                type: 'doughnut',
-                data: {
-                    labels: [`Competitors (${competitorCount})`],
-                    datasets: [{
-                        data: [competitorCount],
-                        backgroundColor: ['rgba(255, 159, 64, 0.5)'],
-                        borderColor: ['rgba(255, 159, 64, 1)'],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        tooltip: {
-                            callbacks: {
-                                label: function (tooltipItem) {
-                                    return `Total: ${competitorCount}`;
-                                }
-                            }
-                        },
-                        legend: { position: 'bottom' }
+new Chart(ctx2, {
+    type: 'bar',
+    data: {
+        labels: ['Competitor Count'],
+        datasets: [{
+            label: 'Total Competitors',
+            data: [competitorCount],
+            backgroundColor: 'rgba(54, 162, 235, 0.8)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1
+        }]
+    },
+    options: {
+        indexAxis: 'y',
+        responsive: true,
+        plugins: {
+            legend: {
+                display: true,
+                position: 'right'
+            },
+            tooltip: {
+                callbacks: {
+                    label: function(context) {
+                        return `Total: ${context.raw}`;
                     }
                 }
-            });
+            }
+        },
+        scales: {
+            x: {
+                beginAtZero: true,
+                grid: {
+                    display: false
+                }
+            },
+            y: {
+                ticks: {
+                    maxRotation: 90, 
+                    minRotation: 90 
+                }
+            }
+        }
+    }
+});
         </script>
+        
         {% endif %}
     </div>
 </body>
